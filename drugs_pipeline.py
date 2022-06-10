@@ -1,12 +1,10 @@
 import argparse
-import itertools
 import logging
 
 import apache_beam
 import apache_beam as beam
 from apache_beam import RowCoder
 from apache_beam.options.pipeline_options import PipelineOptions, SetupOptions
-from dateutil import parser
 
 from beam_data_processing.io.sink import WriteJsonLines
 from beam_data_processing.io.source import ReadCsvFiles, ReadMultiLinesJsonFiles

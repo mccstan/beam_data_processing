@@ -26,7 +26,14 @@ Cela dit, on choisi la modélisation qui permet d'optimisier les requêtes/trait
 Dans le cas présent, le traitement demandé dans la partie ad-hoc s'y prête bien. Cette modélisation permet de répondre à la plus part des cas d'utilisation.
 
 ### Data pipeline
+La data pipeline a plusieurs étapes
+* Lecture et typage des données raw
+* produit cartésien avec condition de jointure basé sur la colonne title
+* Formatage vers le modèle de sortie
+* Ecriture
 
+Executer la pipeline
+`python drugs_pipeline.py`
 Résultat de la pipeline basé sur les échantillons fournis
 
 ---
@@ -86,6 +93,8 @@ Fichier Json produit : `data/processed/drug_references.json`
 ```
 
 ### Traitement ad-hoc
+Executer la traitement
+`python drugs_analytics.py`
 
 Résultat obtenu sur la base du sample fourni :`data/processed/top_journals_mentions.json`
 ```json
