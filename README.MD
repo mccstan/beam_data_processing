@@ -3,19 +3,21 @@ A python data pipeline for data engineering
 
 ## I.Python et Data Engineering
 
-Le code source du projet est localisé sous `src`, les tests sous `test` les données sous `data`.
-* `src/drugs_pipeline.py` : Pipeline de calcul du graphe de dépendance.
-* `src/drugs_analytics.py` : Traitement ad-hoc pour calculer le journal avec le plus de références de médicaments.
-* `src/utils/*.py` : Routines de traitements utilisés dans les pipelines.
-* `test/*.py` : Des tests qui valident les pipelines developées.
+Code source :
+* `drugs_pipeline.py` : Pipeline de calcul du graphe de dépendance.
+* `drugs_analytics.py` : Traitement ad-hoc pour calculer le journal avec le plus de références de médicaments.
+* `beam_data_processing/io` : Code pour les input et output
+* `beam_data_processing/models` : Code pour les data model manipulés
+* `beam_data_processing/transform` : Code pour les transformations spécifiques
 
 Plusieurs modélisations étaient envisageables pour le graphe de dépendance.
 Nous avons choisi un modèle plat basé sur les drugs et leur références.
 Chaque ligne représente un `drug`, sa référencce éventuelle vers une publication de type `pubmed` ou `clinical trial`,
 les journaux dans lesquels cette publication est apparue ainsi que la date de publication.
 Il a fallut faire quelques réajustement :
-    * Unification des colonnes `scientific_title`(clinical_trials) et `title`(pubmed)
-    * Ajout d'une nouvelle colonne `type` avec les valeurs `pubmed` and `clinical trials`
+* Unification des colonnes `scientific_title`(clinical_trials) et `title`(pubmed)
+* Ajout d'une nouvelle colonne `type` avec les valeurs `pubmed` and `clinical trials`
+* Renommage de la colonne `id` en `source_id`
 
 Pourquoi ce choix de modélisation ?
 * La simplicité : Notre modélisation est simple à cerner et permet rapidement de jouer avec la données et produire des insights.
